@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       ">
+    <!-- 注解扫描 -->
+    <context:component-scan base-package="com.flying.controller"/>
+    <!--注解驱动  -->
+    <mvc:annotation-driven>
+        <!--安装FastJson，转换器-->
+        <mvc:message-converters>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <!--声明转换格式：json-->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!--配置静态资源的访问-->
+    <mvc:default-servlet-handler/>
+    <!--配置异常解析器-->
+    <!--<bean class="com.zt.ex.MyException"></bean>-->
+    <!--配置异常拦截器-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash;拦截/in下面所有的handle&ndash;&gt;-->
+            <!--<mvc:mapping path="/in/*" />-->
+            <!--&lt;!&ndash;将登陆的handle排除在外&ndash;&gt;-->
+            <!--<mvc:exclude-mapping path="/in/login"/>-->
+            <!--<bean class="com.zt.interceptor.MyInterceptor" />-->
+        <!--</mvc:interceptor>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/upload/in" />-->
+            <!--<bean class="com.zt.interceptor.UploadMax"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+    <!--配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+</beans>

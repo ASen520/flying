@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Flying首页</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/base.css" />
+		<script src="../js/jquery-3.5.1.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/echarts.min.js"></script>
+	</head>
+	<body>
+	<!--导航菜单栏-->
+	<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 3px;">
+		<div class="container-fluid">
+			<div class="navbar-header">	
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      	<img src="../img/logo.png" class="navbar-brand" />
+		      	<a class="navbar-brand" href="#">管理系统 <small>V1.0</small> </a>
+		      	
+				
+			</div>	
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<img src="../img/user.png " style="margin-right: 5px; width:20px"/> 欢迎，<mark>小周 </mark>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="">个人中心</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" title="系统首页"><img src="../img/index.png"  style="width: 20px;"/> </a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<img class="img-circle" src="../img/msg.png" style="margin-right: 5px; width:20px"/> <span class="badge">42</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="">代付款订单(<span class="text-warning">10</span>)</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="">待发货订单(<span class="text-danger">10</span>)</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="">已发货订单(<span class="text-info">10</span>)</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="">已完成订单(<span class="text-success">10</span>)</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" title="退出登录"><img src="../img/exit.png" style="width: 20px;"/> </a>
+				</li>
+			</ul>
+		</div>
+	
+	</div>
+
+</nav>
+	<!--菜单栏下方-->
+	<div class="row" style="margin-top: 55px; margin-right: 0px; margin-bottom: 50px;">
+		<!--左边下拉菜单栏-->
+		<div class="col-lg-2">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="position: fixed; width: 240px;">
+			  	<div class="panel panel-success">
+				    <div class="panel-heading" role="tab">
+				      <h4 class="panel-title ">
+				      	<img src="../img/list0.png" class="myimg" />
+				        <a role="button"class="mya" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">
+				          系统首页
+				        </a>
+				        
+				      </h4>
+				    </div>
+ 				</div>
+			  		
+			  	<!--商品管理-->
+			  	<div class="panel panel-success">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				      	<img src="../img/list1.png" class="myimg" />
+				        <a  class="mya" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				          商品管理
+				          <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+				      	<div class="panel-body">
+					       	<ul class="list-group">
+							  <li class="list-group-item"><a href="">商品列表 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">添加商品 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">商品分类 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">用户评论 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>  
+							  <li class="list-group-item"><a href="">用户评论 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>  
+							  <li class="list-group-item"><a href="">库存管理 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>  
+							</ul>
+				     	</div>
+				    </div>
+ 				</div>
+ 				<!--订单管理-->
+ 				<div class="panel panel-success">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				      	<img src="../img/list2.png" class="myimg" />
+				        <a class="mya" role="button" data-toggle="collapse" data-parent="#accordion" href="#headingtwo" aria-expanded="true" aria-controls="collapseOne">
+				        	 订单管理
+				        	 <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="headingtwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingtwo">
+				      	<div class="panel-body">
+					       	<ul class="list-group">
+							  <li class="list-group-item"><a href="">订单列表 <span class="glyphicon glyphicon-apple pull-right"></span></a>  </li>
+							  <li class="list-group-item"><a href="">合并订单 <span class="glyphicon glyphicon-apple pull-right"></span></a></li> 
+							</ul>
+				     	</div>
+				    </div>
+ 				</div>
+ 				<!--支付管理-->
+ 				<div class="panel panel-success">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				      	<img src="../img/list3.png" class="myimg" />
+				        <a class="mya" role="button" data-toggle="collapse" data-parent="#accordion" href="#headingthree" aria-expanded="true" aria-controls="collapseOne">
+				        	 支付管理
+				        	 <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="headingthree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingthree">
+				      	<div class="panel-body">
+					       	<ul class="list-group">
+							  <li class="list-group-item"><a href="">账户管理 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">支付方式 <span class="glyphicon glyphicon-apple pull-right"></span></a></li> 
+							  <li class="list-group-item"><a href="">支付配置 <span class="glyphicon glyphicon-apple pull-right"></span></a></li> 
+							</ul>
+				     	</div>
+				    </div>
+ 				</div>
+ 				<!--用户管理-->
+ 				<div class="panel panel-success">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				      	<img src="../img/list4.png" class="myimg" />
+				        <a class="mya" role="button" data-toggle="collapse" data-parent="#accordion" href="#headingfour" aria-expanded="true" aria-controls="collapseOne">
+				        	 用户管理
+				        	 <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="headingfour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+				      	<div class="panel-body">
+					       	<ul class="list-group">
+							  <li class="list-group-item"><a href="">用户列表 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">用户记录管理 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							</ul>
+				     	</div>
+				    </div>
+ 				</div>
+ 				<!--店铺管理-->
+ 				<div class="panel panel-success">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				      	<img src="../img/‎list5.png" class="myimg" />
+				        <a class="mya" role="button" data-toggle="collapse" data-parent="#accordion" href="#headingfive" aria-expanded="true" aria-controls="collapseOne">
+				        	 店铺管理
+				        	 <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+				        </a>
+				         
+				      </h4>
+				    </div>
+				    <div id="headingfive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfive">
+				      	<div class="panel-body">
+					       	<ul class="list-group">
+							  <li class="list-group-item"><a href="">店铺列表 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">店铺审核 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							</ul>
+				     	</div>
+				    </div>
+ 				</div>
+ 				<!--管理员管理-->
+ 				<div class="panel panel-success">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				      	<img src="../img/list6.png" class="myimg" />
+				        <a class="mya" role="button" data-toggle="collapse" data-parent="#accordion" href="#headingsix" aria-expanded="true" aria-controls="collapseOne">
+				        	 管理员管理
+				        	 <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="headingsix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsix">
+				      	<div class="panel-body">
+					       	<ul class="list-group">
+							  <li class="list-group-item"><a href="">管理员列表 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">权限管理 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							  <li class="list-group-item"><a href="">个人信息管理 <span class="glyphicon glyphicon-apple pull-right"></span></a></li>
+							</ul>
+				     	</div>
+				    </div>
+ 				</div>
+			</div>
+		</div>
+		<!--页面主题neir-->
+		<div class="col-lg-10">
+			<div class="page-header" style="margin-top: 20px;">
+				<div class="row">
+					<div class="col-lg-4"><h4>系统首页</h4></div>
+					<div class="col-lg-1 col-lg-offset-7"> <button class="btn btn-success"> 刷新 <span class="glyphicon glyphicon-search"></span> </button> </div>
+				</div>
+			</div>
+			<!--订单介绍-->
+			<div class="panel panel-default">
+			    <div class="panel-body">
+			        <div class="row text-center">
+			        	<div class="col-lg-3">
+			        		<div class="panel panel-success">
+							  <div class="panel-heading"><img src="../img/orderamount.png" class="myimg"/>  今日订单数  </div>
+							  <div class="panel-body"> <h4> <span class="glyphicon glyphicon-list-alt"></span> 200</h4></div>
+							</div>
+			        	</div>
+			        	<div class="col-lg-3">
+			        		<div class="panel panel-success">
+							  <div class="panel-heading"> <img src="../img/todaysell.png" class="myimg"/>今日销售额</div>
+							  <div class="panel-body"> <h4> <span class="glyphicon glyphicon-yen"></span> 200.00</h4></div>
+							</div>
+			        	</div>
+			        	<div class="col-lg-3">
+			        		<div class="panel panel-success">
+							  <div class="panel-heading"> <img src="../img/yesday.png" class="myimg"/>昨日销售额</div>
+							  <div class="panel-body"> <h4> <span class="glyphicon glyphicon-yen"></span> 200.00</h4></div>
+							</div>
+			        	</div>
+			        	<div class="col-lg-3" >
+			        		<div class="panel panel-success">
+							  <div class="panel-heading"> <img src="../img/sevensell.png" class="myimg"/>近7天销售额</div>
+							  <div class="panel-body"> <h4> <span class="glyphicon glyphicon-yen"></span> 200.00</h4></div>
+							</div>
+			        	</div>
+			        </div>
+			    </div>
+			</div>
+			<!--下方详情-->
+			<div class="row">
+				<!--左边商品和用户-->
+				<div class="col-lg-3">
+					<div class="panel panel-success">
+					    <div class="panel-heading">商品总览</div>
+					    <div class="panel-body">
+					    	<ul class="list-group">
+							  	<li class="list-group-item"> <span class="glyphicon glyphicon-upload"></span> 已上架 <span class="badge green" >14</span></li>
+							    <li class="list-group-item"> <span class="glyphicon glyphicon-download"></span> 已下架 <span class="badge pink">14</span></li>
+							    <li class="list-group-item"> <span class="glyphicon glyphicon-bell"></span> 库存紧张 <span class="badge red">14</span></li>
+							    <li class="list-group-item"> <span class="glyphicon glyphicon-th-large"></span> 全部商品 <span class="badge blue">14</span></li>
+							</ul>
+					    </div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">客户总览</div>
+						    <div class="panel-body">
+							    <ul class="list-group">
+							    	<li class="list-group-item"> <span class="glyphicon glyphicon-plus"></span> 今日新增 <span class="badge green" >14</span></li>
+								    <li class="list-group-item"> <span class="glyphicon glyphicon-plane"></span> 昨日新增 <span class="badge pink">14</span></li>
+								    <li class="list-group-item"> <span class="glyphicon glyphicon-text-height"></span> 本月新增 <span class="badge red">14</span></li>
+								    <li class="list-group-item"> <span class="glyphicon glyphicon-resize-vertical"></span> 用户总数 <span class="badge blue">14</span></li>
+								</ul>
+						    </div>
+			        </div>
+					<div class="panel panel-success">
+						<div class="panel-heading">商家总览</div>
+						    <div class="panel-body">
+							    <ul class="list-group">
+							    	<li class="list-group-item"> <span class="glyphicon glyphicon-plus"></span> 今日新增 <span class="badge green" >14</span></li>
+								    <li class="list-group-item"> <span class="glyphicon glyphicon-plane"></span> 昨日新增 <span class="badge pink">14</span></li>
+								    <li class="list-group-item"> <span class="glyphicon glyphicon-text-height"></span> 本月新增 <span class="badge red">14</span></li>
+								    <li class="list-group-item"> <span class="glyphicon glyphicon-resize-vertical"></span> 用户总数 <span class="badge blue">14</span></li>
+								</ul>
+						    </div>
+			        </div>
+			        
+				</div>
+				<!--右边echars图表-->
+				<div class="col-lg-9">
+					<div class="panel panel-success">
+					    <div class="panel-heading">订单统计</div>
+					    <div class="panel-body">
+					    	<div class="row">
+					    		<div class="col-lg-2">
+					    			<div class="panel panel-success">
+									    <div class="panel-body">
+									     	<p>本月订单总数</p>
+									     	<h2>10000</h2>
+									     	<p> <span class="glyphicon glyphicon-chevron-up"></span> <span class="text-success">10%</span> <span class="mark" style="font-size: 10px;">较上月</span> </p>
+									    </div>
+									</div>
+									<div class="panel panel-success">
+									    <div class="panel-body">
+									     	<p>本周订单数量</p>
+									     	<h2>10000</h2>
+									     	<p> <span class="glyphicon glyphicon-chevron-down"></span> <span class="text-danger">10% <span class="mark" style="font-size: 10px;">较上周</span> </span></p>
+									     	
+									    </div>
+									</div>
+					    		</div>
+					    		<div class="col-lg-10">
+					    			<!--上面搜索栏-->
+					    			<div class="panel">
+					    				<div class="btn-group pull-right">
+											<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											    其他 <span class="caret"></span>
+											</button>
+										    <ul class="dropdown-menu">
+											    <li><a href="#">本季度</a></li>
+											    <li><a href="#">本月</a></li>
+											    <li><a href="#">本周</a></li>
+										   </ul>
+										</div>
+										<div class="btn-group pull-right">
+											<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											    月份 <span class="caret"></span>
+											</button>
+										    <ul class="dropdown-menu">
+											    <li><a href="#">12月</a></li>
+											    <li><a href="#">11月</a></li>
+											    <li><a href="#">10月</a></li>
+										   </ul>
+										</div>
+										<div class="btn-group pull-right">
+											<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											    年份 <span class="caret"></span>
+											</button>
+										    <ul class="dropdown-menu">
+											    <li><a href="#">2020年</a></li>
+											    <li><a href="#">2019年</a></li>
+											    <li><a href="#">2018</a></li>
+										   </ul>
+										</div>
+					    			</div>
+					    			<!--下面echars图表-->
+					    			<div class="panel">
+					    				<div id="main" style="height:300px;"></div>
+										    <script type="text/javascript">
+										        // 基于准备好的dom，初始化echarts实例
+										        var myChart = echarts.init(document.getElementById('main'));
+										
+										        // 指定图表的配置项和数据
+										        var option = {
+										            title: {
+										                text: '近一周订单统计'
+										            },
+										            tooltip: {},
+										            legend: {
+										                data:['销量']
+										            },
+										            xAxis: {
+										                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+										            },
+										            yAxis: {},
+										            series: [{
+										                name: '销量',
+										                type: 'bar',
+										                data: [5, 20, 36, 10, 10, 20]
+										            }]
+										        };
+										
+										        // 使用刚指定的配置项和数据显示图表。
+										        myChart.setOption(option);
+										    </script>
+					    			</div>
+					    		</div>
+					    	</div>
+					    </div>
+					</div>
+					<div class="panel panel-success">
+					    <div class="panel-heading">订单统计</div>
+					    <div class="panel-body">
+					    	<div class="row">
+					    		<div class="col-lg-2">
+					    			<div class="panel panel-success">
+									    <div class="panel-body">
+									     	<p>本月销售总额</p>
+									     	<h2>10000</h2>
+									     	<p> <span class="glyphicon glyphicon-chevron-up"></span> <span class="text-danger">10%</span> <span class="mark" style="font-size: 10px;">较上周</span></p>
+									    </div>
+									</div>
+									<div class="panel panel-success">
+									    <div class="panel-body">
+									     	<p>本周销售总额</p>
+									     	<h2>10000</h2>
+									     	<p> <span class="glyphicon glyphicon-chevron-down"></span> <span class="text-danger">10%</span> <span class="mark" style="font-size: 10px;">较上周</span></p>
+									    </div>
+									</div>
+					    		</div>
+					    		<div class="col-lg-10">
+					    			<!--上面搜索栏-->
+					    			<div class="panel">
+					    				<div class="btn-group pull-right">
+											<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											    其他 <span class="caret"></span>
+											</button>
+										    <ul class="dropdown-menu">
+											    <li><a href="#">本季度</a></li>
+											    <li><a href="#">本月</a></li>
+											    <li><a href="#">本周</a></li>
+										   </ul>
+										</div>
+										<div class="btn-group pull-right">
+											<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											    月份 <span class="caret"></span>
+											</button>
+										    <ul class="dropdown-menu">
+											    <li><a href="#">12月</a></li>
+											    <li><a href="#">11月</a></li>
+											    <li><a href="#">10月</a></li>
+										   </ul>
+										</div>
+										<div class="btn-group pull-right">
+											<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											    年份 <span class="caret"></span>
+											</button>
+										    <ul class="dropdown-menu">
+											    <li><a href="#">2020年</a></li>
+											    <li><a href="#">2019年</a></li>
+											    <li><a href="#">2018</a></li>
+										   </ul>
+										</div>
+					    			</div>
+					    			<!--下面echars图表-->
+					    			<div class="panel">
+					    				<div id="main1" style="height:300px;"></div>
+										    <script type="text/javascript">
+										        // 基于准备好的dom，初始化echarts实例
+										        var myChart = echarts.init(document.getElementById('main1'));
+										
+										        // 指定图表的配置项和数据
+										        var option = {
+										            title: {
+										                text: '近一周销售额统计'
+										            },
+										            tooltip: {},
+										            legend: {
+										                data:['销量']
+										            },
+										            xAxis: {
+										                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+										            },
+										            yAxis: {},
+										            series: [{
+										                name: '销量',
+										                type: 'bar',
+										                data: [5, 20, 36, 10, 10, 20]
+										            }]
+										        };
+										
+										        // 使用刚指定的配置项和数据显示图表。
+										        myChart.setOption(option);
+										    </script>
+					    			</div>
+					    		</div>
+					    	</div>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<!--运营快捷入口-->
+			<div class="panel panel-success">
+			    <div class="panel-heading">运营快捷入口</div>
+			    <div class="panel-body">
+				    <ul class="list-group mylist text-center">
+						<li class="list-group-item">
+							<a href="">
+								<div style="margin-bottom: 20px;padding-top: 10px;">
+									<img src="../img/add.png" style="width: 50px;"/>
+								</div>
+								添加商品
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="">
+								<div style="margin-bottom: 20px;padding-top: 10px;">
+									<img src="../img/order.png" style="width: 50px;"/>
+								</div>
+								订单列表
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="">
+								<div style="margin-bottom: 20px;padding-top: 10px;">
+									<img src="../img/userall.png" style="width: 50px;"/>
+								</div>
+								用户管理
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="">
+								<div style="margin-bottom: 20px;padding-top: 10px;">
+									<img src="../img/jiaoyi.png" style="width: 50px;"/>
+								</div>
+								交易统计
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="">
+								<div style="margin-bottom: 20px;padding-top: 10px;">
+									<img src="../img/ad.png" style="width: 50px;"/>
+								</div>
+								广告管理
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a href="">
+								<div style="margin-bottom: 20px;padding-top: 10px;">
+									<img src="../img/shangjia.png" style="width: 50px;"/>
+								</div>
+								商家管理
+							</a>
+						</li>
+					</ul>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-fixed-bottom navbar-default text-center">
+		<div style=" height: 50px; line-height: 50px;">
+			<img  src="../img/zhuang.png" style="height: 30px; margin-top: -5px;"/>
+			<img  src="../img/fly.png" style="height: 30px; margin-top: -5px;"/>
+			<span> <span class="lead">管理系统</span> ，我们一直致力于为广大  <span class="mark">装杯者</span> 提供更多的优质技术文档和辅助装飞工具！</span>
+		</div>
+	</div>
+	</body>
+</html>

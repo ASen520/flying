@@ -1,0 +1,60 @@
+.myimg{
+	height: 20px;
+	margin-right: 10px;
+}
+.red{
+	background-color: red;
+}
+.green{
+	background-color: greenyellow;
+}
+.blue{
+	background-color: blueviolet;
+}
+.pink{
+	background-color: deeppink;
+}
+.mylist>li{
+	float: left;
+	height: 120px;
+	width: 120px;
+	margin-right: 10px;
+}
+.mylist>li a{
+	text-decoration: none;
+	color: green;
+}
+.mylist>li:hover{
+	background-color: deeppink;
+}
+.mya{
+	display: inline-block;
+	width: 170px;
+	text-decoration: none;
+	
+}
+.mya:hover{
+	text-decoration: none;
+}
+.list-group a{
+	color: #666;
+}
+.list-group a:hover{
+	text-decoration: none;
+}
+.list-group-item>a:hover{
+	color: deepskyblue;
+}
+.mypanel{
+	padding: 10px;
+}
+.mypanel>a{
+	width: 150px;
+	margin-right: 20px;
+}
+.trcenter a{
+	color: #000000;
+}
+.trcenter>th{
+	text-align: center;
+}

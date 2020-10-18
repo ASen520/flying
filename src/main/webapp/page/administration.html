@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/layer/layer.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            <button class="btn btn-success">添加</button>
+            <button class="btn btn-success" onclick="deleteAll();">批量删除</button>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th><input type="checkbox" class="selectAll"></th>
+            <th>id</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>头像</th>
+            <th>权限级别</th>
+            <th>联系电话</th>
+            <th>登录名</th>
+            <th>密码</th>
+            <th>注册时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody class="mytable">
+
+        </tbody>
+    </table>
+    <div class="modal fade" tabindex="-1" role="dialog" id="slectAdmin">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">管理员个人信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="pull-left" style="height: 100%;width: 30%">
+                                <img src="../img/ad.png" class="img-circle" style="height: 150px;border: 1px solid red">
+                                <h2 class="text-center">张三</h2>
+                            </div>
+                            <div class="pull-left" style="margin-left: 20px;width: 60%">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>姓名：</strong>
+                                        <span class="mark adminname"></span></li>
+                                    <li class="list-group-item"><strong>性别：</strong>
+                                        <span class="mark sex"></span></li>
+                                    <li class="list-group-item"><strong>联系方式：</strong>
+                                        <span class="mark phone"></span></li>
+                                    <li class="list-group-item"><strong>权限等级：</strong>
+                                        <span class="mark username"></span></li>
+                                    <li class="list-group-item"><strong>登录名：</strong>
+                                        <span class="mark username"></span></li>
+                                    <li class="list-group-item"><strong>密码：</strong>
+                                        <span class="mark username"></span></li>
+                                    <li class="list-group-item"><strong>注册时间：</strong>
+                                        <span class="mark username"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    
+    $(function () {
+        //获取人员信息
+        $.ajax({
+            type: "get",
+            url: "/admins",
+            success: function (re) {
+                var str = "";
+                for (var i = 0; i < re.length; i++) {
+                    str += `
+                      <tr>
+                        <td><input type="checkbox" class="selectDan" onclick="selectDan(this);" aid="${re[i].id}"></td>
+                        <td>${re[i].id}</td>
+                        <td>${re[i].adminname}</td>
+                        <td>${re[i].sex}</td>
+                        <td>${re[i].headimg}</td>
+                        <td>${re[i].jurisdiction}</td>
+                        <td>${re[i].phone}</td>
+                        <td>${re[i].adname}</td>
+                        <td>${re[i].pwd}</td>
+                        <td>${re[i].registertime}</td>
+                        <td>
+                            <button class="btn btn-success btn-xs" onclick="selectadmin(${re[i].id});">查看</button>
+                            <button class="btn btn-default btn-xs" aid="${re[i].id}">修改</button>
+                            <button class="btn btn-danger btn-xs" onclick="deletebyid(${re[i].id},this);">删除</button>
+                        </td>
+                    </tr>
+                    `;
+                }
+                $(".mytable").html(str);
+            }
+        });
+        //全选按钮
+        $(".selectAll").click(function () {
+            if($(this).prop("checked")){
+                $(".selectDan").prop("checked",true);
+                $(".selectDan").attr("data-goods","active");
+            }else{
+                $(".selectDan").prop("checked",false);
+                $(".selectDan").attr("data-goods","");
+            }
+        });
+    });
+    //单选按钮
+    function selectDan(that) {
+        if($(that).prop('checked')){
+            $(that).attr('data-goods', 'active');
+        }else{
+            $(that).attr('data-goods', '');
+        };
+    }
+    //根据id进行删除
+    function deletebyid(id,that) {
+        layer.confirm('你确定要删除该管理员吗', {icon: 3, title: '提示'}, function (index) {
+            var index1 = layer.load(0, {shade: false});
+            $.ajax({
+                type: "delete",
+                url: "/admins/" + id,
+                success: function (re) {
+                    if (re == "true") {
+                        layer.msg('删除成功！',{icon:1,time:1000});
+                        $(that).parents("tr").remove();
+                        layer.close(index1)
+                        return;
+                    }
+                }
+            });
+        });
+    }
+    //批量删除
+    function deleteAll() {
+        var ids = "";
+        $("[data-goods='active']").each(function () {
+            ids += $(this).attr("aid") + ",";
+        });
+        if(ids.length == 0){
+            layer.msg("请选择要删除的数据！",{icon:3,time:1000});
+            return;
+        }
+        layer.confirm('你确定要删除这些管理员吗?', {icon: 3, title: '提示'}, function (index) {
+            var index1 = layer.load(0, {shade: false});
+            $.ajax({
+                type: "get",
+                url: "/deleteAll?id=" + ids,
+                success: function (re) {
+                    if (re == "true") {
+                        layer.msg('删除成功！',{icon:1,time:1000});
+                        $("[data-goods='active']").each(function () {
+                            $(this).parents("tr").remove();
+                        });
+                        layer.close(index1)
+                        return;
+                    }
+                }
+            });
+        });
+    }
+    function selectadmin(id) {
+
+        $.ajax({
+            type:"get",
+            url:"/admins/" + id,
+            success: function (re) {
+                $('#slectAdmin').modal('show');
+                console.log(re);
+            }
+        });
+    }
+
+</script>

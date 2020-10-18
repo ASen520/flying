@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flying.dao.AdminDao">
+    <!-- 使用eachCache外部缓存 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+    <resultMap id="BaseResultMap" type="com.flying.bean.Admin">
+        <id column="id" property="id"/>
+        <result column="adminname" property="adminname"/>
+        <result column="sex" property="sex"/>
+        <result column="headimg" property="headimg"/>
+        <result column="jurisdiction" property="jurisdiction"/>
+        <result column="phone" property="phone"/>
+        <result column="registertime" property="registertime"/>
+        <result column="adname" property="adname"/>
+        <result column="pwd" property="pwd"/>
+    </resultMap>
+    <delete id="deleteByid">
+    delete from `admin`
+    where id = #{id}
+  </delete>
+    <insert id="insert">
+    insert into `admin` (adminname , sex, headimg, jurisdiction, phone, registertime,adname,pwd)
+    values (#{name}, #{sex}, #{headimg}, #{jurisdiction}, #{phone} ,#{registertime},#{adname},#{pwd})
+  </insert>
+    <update id="updateByid">
+    update `admin`
+    set id = #{id},
+      adminname = #{adminname},
+      sex = #{sex},
+      headimg = #{headimg},
+      jurisdiction = #{jurisdiction},
+      phone = #{phone},
+      registertime = #{registertime},
+      adname = #{adname},
+      pwd = #{pwd}
+    where id = #{id}
+  </update>
+    <select id="selectByid" resultMap="BaseResultMap">
+    select id, adminname, sex , headimg ,jurisdiction,phone,registertime,adname,pwd
+    from `admin`
+    where id = #{id}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap" useCache="false">
+    select id, adminname, sex , headimg ,jurisdiction,phone,registertime,adname,pwd
+    from `admin`
+  </select>
+    <select id="login" resultMap="BaseResultMap">
+        select id, adminname, sex , headimg ,jurisdiction,phone,registertime,adname,pwd
+        from `admin` where adname = #{adname}
+    </select>
+    <delete id="deleteAll">
+            delete from `admin` where id in
+            <foreach collection="listid" open="(" close=")" separator="," item="id">
+              #{id}
+            </foreach>
+    </delete>
+</mapper>

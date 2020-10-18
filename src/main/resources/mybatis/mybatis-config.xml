@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 开启缓存 -->
+		<setting name="cacheEnabled" value="true"/>
+		<setting name="logImpl" value="LOG4J"/>
+		<!-- 延迟加载
+			开发中 针对单属性对象，使用accociation元素 ，通常直接使用多表查询操作，也就是使用内联查询(解决N+1问题)
+				  针对集合属性对象，使用collection元素，通常使用延迟加载，也就是额外sql处理
+		 -->
+		 <!-- 开启延迟加载功能 -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!-- 设置不要积极的去查询关联对象 -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<!-- 延迟加载出发的方法 -->
+		<setting name="lazyLoadTriggerMethods" value="clone"/>
+	</settings>
+	<typeAliases>
+		<package name="com.flying.bean"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/flying/dao/AdminDaoMapper.xml"/>
+	</mappers>
+</configuration>
