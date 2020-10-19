@@ -92,12 +92,6 @@
       <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
-    <!--jsckson-->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.9.8</version>
-    </dependency>
     <!--fastjson-->
     <dependency>
       <groupId>com.alibaba</groupId>
